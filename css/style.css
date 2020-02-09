@@ -38,7 +38,22 @@ html {
   .main-nav__icon > a > svg {
     fill: #ffffff;
     width: 4rem;
-    height: 4rem; }
+    height: 4rem;
+    transition: .5s; }
+  .main-nav__icon--instagram:hover {
+    fill: #ff0077;
+    transform: scale(0.7); }
+  .main-nav__icon--youtube:hover {
+    transform: scale(0.7);
+    fill: red; }
+  .main-nav__icon--whatsapp:hover {
+    fill: #00ff40;
+    transform: scale(0.7); }
+  .main-nav__icon--reddit:hover {
+    fill: #ff4800;
+    transform: scale(0.7); }
+  .main-nav__icon--github:hover {
+    transform: scale(0.7) rotate(360deg); }
 
 .location {
   font-family: "Share Tech Mono";
@@ -71,7 +86,9 @@ html {
       stroke-width: .3rem;
       stroke-dasharray: 70 860;
       stroke-dashoffset: 70;
-      animation: outline 0.8s ease-in-out; }
+      animation: outline 0.8s ease-in-out;
+      transition: transform .4s;
+      transform: scale(1.1); }
     .btn-neon--1__border {
       fill: rgba(237, 37, 129, 0.8);
       stroke: #ffffff; }
@@ -89,7 +106,9 @@ html {
       stroke-width: .3rem;
       stroke-dasharray: 70 860;
       stroke-dashoffset: 70;
-      animation: outline 0.8s ease-in-out; }
+      animation: outline 0.8s ease-in-out;
+      transition: transform .4s;
+      transform: scale(1.1); }
     .btn-neon--2__border {
       fill: rgba(62, 192, 235, 0.8);
       stroke: #ffffff; }
