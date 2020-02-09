@@ -1,0 +1,183 @@
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: inherit; //specifies that a property should inherit its value from its parent element
+}
+
+html {
+    box-sizing: border-box; //	The width and height properties (and min/max properties) includes content, padding and border
+    font-size: 62.5%; //10px
+}
+
+.header {
+
+}
+
+.site-wrapper {
+    height: 100vh;
+    background-size: cover;
+    background-position: center;
+    background-image: linear-gradient(rgba(193, 78, 156, 0.15), rgba(193, 78, 156, 0.15)), url(../img/bg-1.jpg);
+    
+   display: grid;
+   //grid-template-columns: minmax(6rem, 1fr) minmax(min-content, 14rem) minmax(6rem, 1fr);
+   grid-template-rows: 1fr repeat(2, minmax(min-content, 1.5fr)) min-content .5fr;
+   grid-template-columns: [bars-start] 10vw [content-start] repeat(4, [col-start] 1fr [col-end]) [content-end] 10vw [bars-end];
+   grid-row-gap: 3rem;
+   grid-column-gap: 5rem;
+
+}
+
+.navigation {
+    background-color: rgba(0, 0, 0, .8);
+    border-bottom: .1rem solid #ffffff;
+    padding: 2rem;
+    height: 7rem;
+
+    grid-column: bars-start / bars-end;
+    display: flex;
+    justify-content: space-between;
+
+}
+
+.main-nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    width: 25vw;
+    list-style-type: none;
+    
+
+    &__icon > a > svg {
+        fill:#ffffff;
+        width: 4rem;
+        height: 4rem;
+    }
+}
+
+.location {
+    font-family: "Share Tech Mono";
+    color: #ffffff;
+    font-size: 2.5rem;
+    width: 70vw;
+    text-align: end;
+    
+  
+}
+
+
+.main-title {
+    font-family: "Permanent Marker";
+    color: #ffffff;
+    font-size: 18rem;
+    line-height: 1.1;
+    text-transform: uppercase;
+    letter-spacing: 1rem;
+    text-shadow: 6px 6px 10px rgba(0, 0, 0, .99);
+    text-align: end;
+
+    grid-column: col-start 1 / col-end 4;
+}
+
+.btn-neon {
+    text-decoration: none;
+    height: 7.6rem;
+
+    &--1 {
+        grid-column: col-start 3 / col-end 3;
+        align-self: center;
+        transition: .5s;
+        
+        svg {
+            ///box-sizing: content-box;
+            &:hover {
+                background-color: rgba(237, 37, 129, 1);
+                box-shadow: 0 0 .5rem rgba(237, 37, 129, 1),
+                            0 0 2.5rem rgba(237, 37, 129, 1),
+                            0 0 5rem rgba(237, 37, 129, 1),
+                            0 0 20rem rgba(237, 37, 129, 1);   
+                            
+                stroke-width: .3rem;
+                stroke-dasharray: 70 860;
+                stroke-dashoffset: 70;
+                animation: outline 0.8s ease-in-out;
+            }
+        }
+    
+        &__border {
+            fill:rgba(237, 37, 129, 0.8);
+            stroke: #ffffff;
+                    
+        }
+        
+        &__text {
+            font-family: "Share Tech Mono";
+            font-size: 3.6rem;
+            fill:#ffffff;
+        }
+    } 
+
+    &--2 {
+        grid-column: col-start 4 / col-end 4;
+        align-self: center;
+        transition: .5s;
+
+        svg {
+            &:hover {
+                background-color: rgba(62, 192, 235, 1);
+                box-shadow: 0 0 .5rem rgba(62, 192, 235, 1),
+                            0 0 2.5rem rgba(62, 192, 235, 1),
+                            0 0 5rem rgba(62, 192, 235, 1),
+                            0 0 20rem rgba(62, 192, 235, 1);
+
+                stroke-width: .3rem;
+                stroke-dasharray: 70 860;
+                stroke-dashoffset: 70;
+                animation: outline 0.8s ease-in-out;
+            }
+        }
+
+        &__border {
+            fill:rgba(62, 192, 235, 0.8);
+            stroke: #ffffff;
+                    
+        }
+        
+        &__text {
+            font-family: "Share Tech Mono";
+            font-size: 3.6rem;
+            fill:#ffffff;
+        }    
+    }
+}
+
+
+@keyframes outline {
+    from {
+      stroke-dashoffset: 70;
+      border: 0;
+    }
+    to {
+      stroke-dashoffset: -860;
+      border: 0;
+    }
+}
+
+.bar-ad {
+    background-color: rgba(0, 0, 0, .8);
+    border-top: .1rem solid #ffffff;
+    border-bottom: .1rem solid #ffffff;
+
+    text-transform: uppercase;
+    font-family: "Share Tech Mono";
+    color: #ffffff;
+    font-size: 3.5rem;
+    padding: 1.5rem 0;
+    height: 7rem;
+    white-space: nowrap;
+    overflow: hidden;
+    
+    grid-column: bars-start / bars-end;
+}

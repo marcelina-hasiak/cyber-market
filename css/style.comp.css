@@ -1,0 +1,4 @@
+.site-wrapper {
+  width: 100vh;
+  background-image: url(../img/bg-1.jpg);
+  display: flex; }
