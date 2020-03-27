@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="css/style.css">
     
     <title>Cyber_Asia</title>
+    
 </head>
 <body>
     <header class="header">
@@ -18,7 +19,13 @@
                     <li class="main-nav__element">
                         <a href="#">
                             <svg class="main-nav__element__icon main-nav__element__icon--instagram">
-                                <use xlink:href="img/sprite.svg#icon-instagram"></use>
+                                <radialGradient id="Gradient-instagram" cx="30%" cy="107%" r="120%" fx="30%" fy="107%">
+                                    <stop offset="5%" stop-color="#fdf497"/>
+                                    <stop offset="45%" stop-color="#fd5949" />
+                                    <stop offset="65%" stop-color="#d6249f"/>
+                                    <stop offset="100%" stop-color="#285AEB"/>
+                                </radialGradient>
+                            <use xlink:href="img/sprite.svg#icon-instagram"></use>
                             </svg>
                         </a>
                     </li>
@@ -53,22 +60,31 @@
                 </ul> 
                 <div class="location">思い出横丁, 1-chōme-2 Nishishinjuku, Shinjuku City, Tōkyō-to 160-0023</div>
             </nav>
-            <h1 class="main-title">Cyber Market</h1>
+            <h1 class="main-title main-title--0" data-text="CYBER">Cyber</h1>
+            <h2 class="main-title main-title--1" data-text="MARKET">Market</h2>
             <a href="#" class="btn-neon btn-neon--1">
-                <svg width="350px" height="76px" viewBox="0 0 350 76">
+                <svg width="340px" height="76px" viewBox="0 0 350 76">
                     <rect class="btn-neon--1__border" width="350" height="76"/>
-                    <rect class="btn-neon--1__bg" width="350" height="76"/>
+                    <rect class="btn-neon--1__bg" width="349.5" height="76"/>
                     <text class="btn-neon--1__text" transform="matrix(1 0 0 1 56.4106 49.666)">I’M A SELLER</text>
                 </svg>
             </a>
             <a href="#" class="btn-neon btn-neon--2">
-                <svg width="350px" height="76px" viewBox="0 0 350 76">
+                <svg width="340px" height="76px" viewBox="0 0 350 76">
                     <rect class="btn-neon--2__border" width="350" height="76"/>
-                    <rect class="btn-neon--2__bg" width="350" height="76"/>
+                    <rect class="btn-neon--2__bg" width="349.5" height="76"/>
                     <text class="btn-neon--2__text" transform="matrix(1 0 0 1 38.9219 49.666)">I’M A CUSTOMER</text>
                 </svg>
             </a>
-            <div class="bar-ad">FOR NEW AUGMENTATION CALL 7843-4235 ..... METAL PARTS STAND NO.13055 ..... SHRIMPS, CRABS AND LOBSTERS</div>
+            <div class="bar-ad"> 
+                <span class="bar-ad__text-1">
+                    &nbsp;FOR NEW AUGMENTATION CALL 7843-4235 ..... METAL PARTS STAND NO.13055 ..... SHRIMPS, CRABS AND LOBSTERS NEXT TO 'LITHIUM' PHARMACY ..... AVESOME SELL!: <span class="letter letter--1">D</span>AISIES, <span class="letter letter--2">R</span>OSES, <span class="letter letter--3">U</span>RSINIAS, <span class="letter letter--4">G</span>ERBERAS, <span class="letter letter--5">S</span>AFFRONS - STAND NO.697 .....
+                </span>
+                
+                <span class="bar-ad__text-2">
+                    &nbsp;FOR NEW AUGMENTATION CALL 7843-4235 ..... METAL PARTS STAND NO.13055 ..... SHRIMPS, CRABS AND LOBSTERS NEXT TO 'LITHIUM' PHARMACY ..... AVESOME SELL!: <span class="letter letter--1">D</span>AISIES, <span class="letter letter--2">R</span>OSES, <span class="letter letter--3">U</span>RSINIAS, <span class="letter letter--4">G</span>ERBERAS, <span class="letter letter--5">S</span>AFFRONS - STAND NO.697 .....
+                </span>
+            </div>
         </div>
     </header>
     <main class="main">

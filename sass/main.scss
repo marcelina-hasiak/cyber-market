@@ -13,21 +13,38 @@ html {
 
 .site-wrapper {
     height: 100vh;
+    background-image:   url(../img/bg-1.jpg),
+                        url(../img/bg-2.jpg),
+                        url(../img/bg-3.jpg);
     background-size: cover;
     background-position: center;
-    background-image: linear-gradient(rgba(193, 78, 156, 0.15), rgba(193, 78, 156, 0.15)), url(../img/bg-1.jpg);
+    background-repeat: no-repeat;
+    animation: changebg 36s infinite ease-in-out; 
     
-   display: grid;
-   grid-template-rows: 1fr repeat(2, minmax(min-content, 1.5fr)) min-content .5fr;
-   grid-template-columns: [bars-start] 10vw [content-start] repeat(4, [col-start] 1fr [col-end]) [content-end] 10vw [bars-end];
-   grid-row-gap: 3rem;
-   grid-column-gap: 5rem;
+    display: grid;
+    grid-template-rows: 1fr repeat(3, minmax(min-content, 1.5fr)) min-content .5fr;
+    grid-template-columns: [bars-start] 10vw [content-start] repeat(4, [col-start] 1fr [col-end]) [content-end] 10vw [bars-end];
+    grid-row-gap: 3rem;
+    grid-column-gap: 5rem;
+  
+}
+@keyframes changebg {
+    0% {background-image: url(../img/bg-1.jpg);}
+    33% {background-image: url(../img/bg-2.jpg);}
+    66% {background-image: url(../img/bg-3.jpg);}
+    100% {background-image: url(../img/bg-1.jpg);}
 }
 
+// @keyframes fade {
+// 0% {opacity: .7} 
+// 30% {opacity: 1} 
+// 100% {opacity: 1}
+// }
+  
 .navigation {
     background-color: rgba(0, 0, 0, .8);
     border-bottom: .1rem solid #ffffff;
-    padding: 1rem 3rem;
+    padding: 2rem 3rem;
     height: 7rem;
     
     grid-column: bars-start / bars-end;
@@ -50,6 +67,7 @@ html {
 
         & > a {
             outline: none;
+            display: inline-block;
         }
         
         &__icon {
@@ -64,7 +82,7 @@ html {
             }
 
             &--instagram {
-                fill: url(../img/sprite.svg#Gradient-instagram);
+                fill: url(#Gradient-instagram);
                 filter: drop-shadow(0 0 2px #ffffff) drop-shadow( 0 0 10px #ffffff);
                 animation: flicker 6s infinite step-end;
             }
@@ -125,8 +143,26 @@ html {
     9%    { opacity: 0.4; }
     10%   { opacity: 1;   }
     100%  { opacity: 1;   }
-  }
- 
+}
+
+@for $i from 1 through 4 {
+    @keyframes glitch-animation-#{$i} {
+        $steps: 20;
+        @for $i from 0 through $steps - 10 {
+            #{percentage($i*(1/$steps))} {
+                $top: random(160);
+                $bottom: random(180);
+                clip: rect(#{$top}px, 4000px, #{$bottom}px, 0);
+            }
+        }
+        51% {
+            clip: rect(0, 0, 0, 0)
+        }
+        100% {
+            clip: rect(0, 0, 0, 0)
+        }
+    }
+}
 
 .location {
     font-family: "Share Tech Mono";
@@ -134,10 +170,11 @@ html {
     font-size: 2.5rem;
     width: 70vw;
     text-align: end;
+    white-space: nowrap;
 }
 
-
 .main-title {
+    position: relative;
     font-family: "Permanent Marker";
     color: #ffffff;
     font-size: 18rem;
@@ -146,8 +183,43 @@ html {
     letter-spacing: 1rem;
     text-shadow: 6px 6px 10px rgba(0, 0, 0, .99);
     text-align: end;
+    grid-column: col-start 1 / col-end 4; 
 
-    grid-column: col-start 1 / col-end 4;
+    &--0 {
+        grid-row: 2 / 3;  
+        &::before {
+            animation: glitch-animation-1 2s linear infinite alternate-reverse;
+        }
+        &::after {
+            animation: glitch-animation-2 2s .5s linear infinite alternate-reverse;
+        }
+    }
+
+    &--1 {
+        grid-row: 3 / 4;  
+        &::before {
+            animation: glitch-animation-3 2s linear infinite alternate-reverse;
+        }
+        &::after {
+            animation: glitch-animation-4 2s .5s linear infinite alternate-reverse;
+        }
+    }
+    
+    &::before,
+    &::after {
+        content: attr(data-text);
+        position: absolute;
+        left: 2px;
+        top: 0;
+        width: 100%;
+        height: 100%;
+    }
+    &::before {
+        clip: rect(24px, 550px, 90px, 0); 
+    }
+    &::after {
+        clip: rect(85px, 700px, 140px, 0);
+    }
 }
 
 .btn-neon {
@@ -161,7 +233,6 @@ html {
     &--1 {
         grid-column: col-start 3 / col-end 3;
         align-self: center;
-        
         
         & > svg:hover {
             background-color: rgba(237, 37, 129, 1);
@@ -240,20 +311,81 @@ html {
     }
 }
 
-
 .bar-ad {
     background-color: rgba(0, 0, 0, .8);
     border-top: .1rem solid #ffffff;
     border-bottom: .1rem solid #ffffff;
-
-    text-transform: uppercase;
-    font-family: "Share Tech Mono";
-    color: #ffffff;
-    font-size: 3.5rem;
-    padding: 1.5rem 0;
     height: 7rem;
     white-space: nowrap;
     overflow: hidden;
-    
     grid-column: bars-start / bars-end;
+    display: flex;
+
+    &:hover > * {
+        animation-play-state: paused;
+    }
+    
+    
+    &__text-1,
+    &__text-2 {
+        text-transform: uppercase;
+        font-family: "Share Tech Mono";
+        color: white;
+        font-size: 3.5rem;
+        padding: 1.5rem 0;   
+
+        & > .letter {
+            text-transform: uppercase;
+            font-family: "Share Tech Mono";
+            color: white;
+            font-size: 3.5rem;
+            text-shadow:    0 0 5px #fff,
+                            0 0 10px #fff,
+                            0 0 20px #fff;
+            &--1 {
+                animation: flicker 2.5s infinite step-end;
+            }
+            &--2 {
+                animation: flicker 2s infinite step-end;
+            }
+            &--3 {
+                animation: flicker 1s infinite step-end;
+            }
+            &--4 {
+                animation: flicker 2s infinite step-end;
+            }
+            &--5 {
+                animation: flicker .5s infinite step-end;
+            }
+
+        }
+    }
+
+    &__text-1{
+        animation: scroll-1 40s linear infinite;
+        animation-delay: -20s;
+        
+    }
+    &__text-2{
+        animation: scroll-2 40s linear infinite;
+        animation-delay: 0s;
+    }
+}
+
+@keyframes scroll-1 {
+    from {
+      transform: translateX(100%);
+    }
+    to {
+      transform: translateX(-100%);
+    }
+}
+  
+@keyframes scroll-2 {
+from {
+    transform: translateX(0%);
+}
+to {
+    transform: translateX(-200%);
+    }
 }
