@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
-    <link href="https://fonts.googleapis.com/css?family=Permanent+Marker|Share+Tech+Mono&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Permanent+Marker|Oxanium|Share+Tech+Mono&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
     
     <title>Cyber_Asia</title>
@@ -25,7 +25,7 @@
                                     <stop offset="65%" stop-color="#d6249f"/>
                                     <stop offset="100%" stop-color="#285AEB"/>
                                 </radialGradient>
-                            <use xlink:href="img/sprite.svg#icon-instagram"></use>
+                                <use xlink:href="img/sprite.svg#icon-instagram"></use>
                             </svg>
                         </a>
                     </li>
@@ -62,7 +62,7 @@
             </nav>
             <h1 class="main-title main-title--0" data-text="CYBER">Cyber</h1>
             <h2 class="main-title main-title--1" data-text="MARKET">Market</h2>
-            <a href="#" class="btn-neon btn-neon--1">
+            <a href="#popup" class="btn-neon btn-neon--1">
                 <svg width="340px" height="76px" viewBox="0 0 350 76">
                     <rect class="btn-neon--1__border" width="350" height="76"/>
                     <rect class="btn-neon--1__bg" width="349.5" height="76"/>
@@ -87,12 +87,46 @@
             </div>
         </div>
     </header>
-    <main class="main">
-
-    </main>
+    
     <footer class="footer">
 
     </footer>
+
+    <!-- POPUP-->
+    <div class="popup-enviroment" id="popup">
+        <div class="popup">
+            <div class="popup__heading">
+                <h3 class="popup__heading__tittle"> Login here </h3>
+                <svg class="popup__heading__svg">
+                    <use xlink:href="img/sprite.svg#fingerprint"></use>
+                </svg>
+                <a href="/index.html" class="popup__heading__close-button">&times;</a>
+            </div>
+            <form class="popup__form"> 
+                <div class="popup__form__container">
+                    <input type="email" id="email" class="popup__form__container__input" placeholder="Email address" onfocus="this.placeholder=''" onblur="this.placeholder='Email address'">
+                    <label for="email" class="popup__form__container__label">Email address</label>
+                </div>
+            
+                <div class="popup__form__container">  
+                    <input type="password" id="password" class="popup__form__container__input"  placeholder="Password" onfocus="this.placeholder=''" onblur="this.placeholder='Password'">
+                    <label for="password" class="popup__form__container__label">Password</label>
+                </div>
+                
+                
+                <button class="popup__form__button" href="#">LOGIN</button>
+                <button class="popup__form__button" href="#">NEW ACCOUNT</button>
+                
+                <div class="popup__form__container"> 
+                    <p>Forgetten Password: 
+                    <a href="#">Click here</a>
+                    </p>
+                </div>
+            </form> 
+        </div>
+    </div>
+
+
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="js/script.js"></script> 
 </body>
