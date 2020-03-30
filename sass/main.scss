@@ -19,7 +19,7 @@ html {
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    animation: changebg 36s linear; 
+    animation: changebg 36s infinite; 
     display: grid;
     grid-template-rows: 1fr repeat(3, minmax(min-content, 1.5fr)) min-content .5fr;
     grid-template-columns: [bars-start] 10vw [content-start] repeat(4, [col-start] 1fr [col-end]) [content-end] 10vw [bars-end];
@@ -457,9 +457,10 @@ to {
             padding: 0 4rem 0 0 ;
         }
         &__svg {
-            width: 15rem;
-            height: 15rem;
+            width: 16rem;
+            height: 16rem;
         }
+
         &__close-button {
             &,
             &:link,
@@ -541,11 +542,12 @@ to {
                 color: rgba(255,255,255, 1);
                 font-size: 2rem;
                 font-family: "Share Tech Mono";
+                filter: none;
 
                 &:focus + label {
                 opacity: 1;
                 visibility: visible;
-                transform: scaleY(0rem);
+                transform: translateY(0rem);
                 }
                 &:focus:invalid {
                 border-bottom: 3px solid red;
@@ -574,7 +576,7 @@ to {
                 transform: translateY(-4rem);
                 font-size: 1.5rem;
                 opacity: 0;
-                visibility: hidden ;
+                visibility: hidden;
                 transition: all .3s;
             }
             & p a {
@@ -588,5 +590,41 @@ to {
                 }
             }
         }
+    }
+}
+
+////////////// SVG FINGERPRINT ///////////////////
+.fingerprint__path--animated {
+    stroke-dasharray: 160;
+    stroke-dashoffset: 160;
+    transition: stroke-dashoffset 1s ease;
+    animation: fingerprint-animation 3s .3s ease forwards; 
+}
+
+.fingerprint__border--animated {
+stroke-dasharray: 300;
+stroke-dashoffset: 300;
+transition: stroke-dashoffset 1s ease-out;
+animation: border-animation 2s .3s ease-out forwards; 
+}
+  
+@keyframes fingerprint-animation {
+    from {
+        stroke-dashoffset: 160;
+        opacity: 0;
+    }
+    to {
+        stroke-dashoffset: 0;
+        opacity: 1;
+    }
+}
+@keyframes border-animation {
+    from {
+        stroke-dashoffset: 300;
+        opacity: 0;
+    }
+    to {
+        stroke-dashoffset: 0;
+        opacity: 1;
     }
 }

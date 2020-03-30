@@ -1,4 +1,16 @@
+customerButton = document.querySelector('#seller__button')
+customerButton.addEventListener('click', () => {
+  animateFingerprint()
+})
 
+animateFingerprint = () => {
+  const fingerprint = document.querySelector('#fingerprint__path')
+  fingerprint.classList.add('fingerprint__path--animated')
+  const border = document.querySelectorAll('.fingerprint__border')
+  border.forEach((el) => {
+    el.classList.add('fingerprint__border--animated')
+  })
+}
 
     // const backgroundImages = [
     //   "1.jpg",
