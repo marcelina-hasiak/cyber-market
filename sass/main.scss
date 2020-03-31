@@ -220,7 +220,14 @@ html {
         clip: rect(85px, 700px, 140px, 0);
     }
 }
-
+@keyframes btn-border-animation {
+    from {
+        stroke-dashoffset: 50;
+    }
+    to {
+        stroke-dashoffset: -900;
+    }
+} 
 .btn-neon {
     text-decoration: none;
     text-align: center;
@@ -273,7 +280,6 @@ html {
         grid-column: col-start 4 / col-end 4;
         align-self: center;
         
-
         & > svg:hover {
             background-color: rgba(62, 192, 235, 1);
             box-shadow: 0 0 .5rem rgba(62, 192, 235, 1),
@@ -284,7 +290,8 @@ html {
         }
         
         svg:hover .btn-neon--2__border {
-            stroke-dashoffset: -900;
+            animation: btn-border-animation 1.5s ease-in-out 
+            
         }
 
         &__border {
@@ -293,7 +300,8 @@ html {
             stroke-width: .5rem;
             stroke-dasharray: 50 900;
             stroke-dashoffset: 50;
-            transition: 1.5s ease-in-out;      
+            //transition: 1.5s ease-in-out;   
+              
         }
 
         &__bg {
@@ -417,7 +425,41 @@ to {
         transform: scale(1);
     }
 }
-.popup{
+.popup-color-bg-pink {
+    &::before {
+        content: "";
+        position: absolute;
+        top: 15px;
+        bottom: 10px;
+        left: 15px;
+        right: 15px;
+        z-index: -100;
+        background-color:rgba(237, 37, 129, 0.7);
+        box-shadow: 
+          0px 0px 5px 1px rgba(255,255,255,1),
+          0px 0px 5px 1px rgba(255,255,255,1),
+          0px 0px 5px 2px rgba(255,255,255,1);
+        filter: blur(45px) contrast(110%);
+    }
+}
+.popup-color-bg-blue {
+    &::before {
+        content: "";
+        position: absolute;
+        top: 15px;
+        bottom: 10px;
+        left: 15px;
+        right: 15px;
+        z-index: -100;
+        background-color:rgba(62, 192, 235, 0.8);
+        box-shadow: 
+          0px 0px 5px 1px rgba(255,255,255,1),
+          0px 0px 5px 1px rgba(255,255,255,1),
+          0px 0px 5px 2px rgba(255,255,255,1);
+        filter: blur(45px) contrast(110%);
+    }
+}
+.popup {
     width: min-content;
     padding: 6rem 14rem 8rem 14rem;
     position: relative;
@@ -428,23 +470,7 @@ to {
     opacity: 0;
     visibility: hidden;
     white-space: nowrap;
-
-    &::before {
-        content: "";
-        position: absolute;
-        top: 15px;
-        bottom: 10px;
-        left: 15px;
-        right: 15px;
-        z-index: -100;
-        background:rgba(237, 37, 129, 0.7);
-        box-shadow: 
-          0px 0px 5px 1px rgba(255,255,255,1),
-          0px 0px 5px 1px rgba(255,255,255,1),
-          0px 0px 5px 2px rgba(255,255,255,1);
-        filter: blur(45px) contrast(110%);
-    }
-
+    
     &__heading {
         display: flex;
         justify-content: space-between;
@@ -537,7 +563,7 @@ to {
                 padding: 5px 0;
                 outline: none;
                 border: none;
-                border-bottom: 2px solid rgba(255,255,255, 1);
+                border-bottom: 3px solid rgba(255,255,255, 1);
                 background: transparent;
                 color: rgba(255,255,255, 1);
                 font-size: 2rem;
@@ -550,10 +576,12 @@ to {
                 transform: translateY(0rem);
                 }
                 &:focus:invalid {
-                border-bottom: 3px solid red;
+                border-bottom: 3px solid rgb(88, 88, 88);
+                
                 }
                 &:invalid, input:-moz-ui-invalid {
-                border-bottom: 2px solid red;
+                border-bottom: 2px solid rgb(88, 88, 88);
+                
                 outline:none;
                 box-shadow:none;
                 -moz-box-shadow:none;
@@ -593,12 +621,14 @@ to {
     }
 }
 
+
 ////////////// SVG FINGERPRINT ///////////////////
 .fingerprint__path--animated {
     stroke-dasharray: 160;
     stroke-dashoffset: 160;
     transition: stroke-dashoffset 1s ease;
     animation: fingerprint-animation 3s .3s ease forwards; 
+    opacity:0;
 }
 
 .fingerprint__border--animated {
@@ -606,6 +636,7 @@ stroke-dasharray: 300;
 stroke-dashoffset: 300;
 transition: stroke-dashoffset 1s ease-out;
 animation: border-animation 2s .3s ease-out forwards; 
+opacity: 0;
 }
   
 @keyframes fingerprint-animation {
