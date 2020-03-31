@@ -251,7 +251,9 @@ html {
         }
         
         svg:hover .btn-neon--1__border {
+            //animation: btn-border-animation 1.5s ease-in-out 
             stroke-dashoffset: -900;
+            //transition: stroke-dashoffset 1s ease-in-out  
         }
     
         &__border {
@@ -260,7 +262,8 @@ html {
             stroke-width: .5rem;
             stroke-dasharray: 50 900;
             stroke-dashoffset: 50;
-            transition: 1.5s ease-in-out;        
+            transition: stroke-dashoffset 1.3s ease-in-out  
+            
         }
 
         &__bg {
@@ -290,8 +293,8 @@ html {
         }
         
         svg:hover .btn-neon--2__border {
-            animation: btn-border-animation 1.5s ease-in-out 
-            
+            //animation: btn-border-animation 1.5s ease-in-out 
+            stroke-dashoffset: -900;
         }
 
         &__border {
@@ -300,7 +303,8 @@ html {
             stroke-width: .5rem;
             stroke-dasharray: 50 900;
             stroke-dashoffset: 50;
-            //transition: 1.5s ease-in-out;   
+            transition: stroke-dashoffset 1.3s ease-in-out  
+              
               
         }
 
