@@ -19,7 +19,8 @@ html {
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    animation: changebg 36s infinite; 
+    animation: changebg 36s infinite;
+    overflow: hidden; 
     display: grid;
     grid-template-rows: 1fr repeat(3, minmax(min-content, 1.5fr)) min-content .5fr;
     grid-template-columns: [bars-start] 10vw [content-start] repeat(4, [col-start] 1fr [col-end]) [content-end] 10vw [bars-end];
@@ -404,6 +405,7 @@ to {
 ///////////////POPUP/////////////////
 .popup-enviroment {
     position: absolute;
+    overflow: hidden;
     top: 0;
     display: grid;
     justify-content: center;
@@ -636,11 +638,11 @@ to {
 }
 
 .fingerprint__border--animated {
-stroke-dasharray: 300;
-stroke-dashoffset: 300;
-transition: stroke-dashoffset 1s ease-out;
-animation: border-animation 2s .3s ease-out forwards; 
-opacity: 0;
+    stroke-dasharray: 300;
+    stroke-dashoffset: 300;
+    transition: stroke-dashoffset 1s ease-out;
+    animation: border-animation 2s .3s ease-out forwards; 
+    opacity: 0;
 }
   
 @keyframes fingerprint-animation {
@@ -661,5 +663,208 @@ opacity: 0;
     to {
         stroke-dashoffset: 0;
         opacity: 1;
+    }
+}
+
+@keyframes turn-on {
+    0% {
+      transform: scale(1, .8) translate3d(0, 0, 0);
+      opacity: 1
+    }
+    5% {
+      transform: scale(1.09139, 1.34235) translate3d(0, 100%, 0)
+    }
+    10% {
+      transform: scale(.63084, 1.40698) translate3d(0, -100%, 0)
+    }
+    15% {
+      transform: scale(.75142, 1.34118) translate3d(0, 100%, 0)
+    }
+    20% {
+      transform: scale(.96173, 1.36858) translate3d(0, -100%, 0)
+    }
+    25% {
+      transform: scale(1.1348, 1.02729) translate3d(0, 100%, 0)
+    }
+    30% {
+      transform: scale(.97038, .71092) translate3d(0, -100%, 0)
+    }
+    35% {
+      transform: scale(.6067, 1.31101) translate3d(0, 100%, 0)
+    }
+    40% {
+      transform: scale(.786, .9326) translate3d(0, -100%, 0)
+    }
+    45% {
+      transform: scale(1.38602, 1.14399) translate3d(0, 100%, 0)
+    }
+    60% {
+      transform: scale(.69973, .90412) translate3d(0, -100%, 0)
+    }
+    61% {
+      transform: scale(1, 1) translate3d(0, 0, 0);
+      filter: brightness(1) saturate(1);
+      opacity: 0
+    }
+    100% {
+      transform: scale(1, 1) translate3d(0, 0, 0);
+      filter: contrast(1) brightness(1.2) saturate(1.3);
+      opacity: 1
+    }
+  }
+@keyframes flicker-2 {
+0% {
+    opacity: .86139
+}
+5% {
+    opacity: .12793
+}
+10% {
+    opacity: .36759
+}
+15% {
+    opacity: .9766
+}
+20% {
+    opacity: .61364
+}
+25% {
+    opacity: .94477
+}
+30% {
+    opacity: .57811
+}
+35% {
+    opacity: .03416
+}
+40% {
+    opacity: .21835
+}
+45% {
+    opacity: .62054
+}
+50% {
+    opacity: .89452
+}
+55% {
+    opacity: .89997
+}
+60% {
+    opacity: .37872
+}
+65% {
+    opacity: .04929
+}
+70% {
+    opacity: .14477
+}
+75% {
+    opacity: .27512
+}
+80% {
+    opacity: .84701
+}
+85% {
+    opacity: .85952
+}
+90% {
+    opacity: .76553
+}
+95% {
+    opacity: .91372
+}
+100% {
+    opacity: .05536
+}
+}
+
+
+///////////////////////////////////    ACCOUNT    //////////////////////////
+
+.account {
+    //padding: 3rem;
+    background: url(../img/bg-account.png);
+    height: 100vh;
+    font-family: "Oxanium";
+    text-align: center;
+    overflow: hidden;
+    font-size: 5rem;
+    letter-spacing: .5rem;
+    color: rgb(0, 255, 55);
+    text-shadow: 0 0 .5rem rgb(0, 255, 55),
+                0 0 2.5rem rgb(0, 255, 55);
+    display: grid;
+    grid-template-columns: 1fr 3fr 1fr;
+    grid-template-rows: min-content repeat(7, minmax(min-content, 1fr)) minmax(3rem, .5fr);
+    align-items: center;
+    gap: 1.5rem;
+
+    &__title{
+        grid-column: 2/3;
+        grid-row: 2/3;
+    }
+
+    &__subtitle{
+        grid-column: 2/3;
+        
+        &--1{
+            grid-row: 3/4;
+        }
+        &--2{
+            grid-row: 5/6;
+        }
+    }
+
+    &__decorative-trail {
+        grid-column: 1/-1;
+        font-size: 2rem;
+        letter-spacing: .5rem;
+
+        &--1{
+            grid-row: 4/5;
+        }
+        &--2{
+            grid-row: 7/8;
+        }
+    }
+    &__status {
+        grid-column: 2/3;
+        grid-row: 6/7;
+        font-size: 3rem;
+        & span {
+            font-size: 4rem;
+        }
+    }
+    &__form {
+        grid-column: 2/3;
+        grid-row: 8/9;
+        display: flex;
+        justify-content: space-around;
+
+        &__input {
+            width: 40%;
+            background-color: rgba(0, 255, 55, 0.2);
+            border: none;
+            border-bottom: 2px solid rgb(0, 255, 55);
+            color: rgb(0, 255, 55);
+            font-size: 4rem;
+            font-family: "Oxanium";
+            text-align: end; 
+            padding: 0 1rem;
+        }
+        
+        &__button{
+            width: 40%;
+            text-decoration: none;
+            font-size: 4rem;
+            padding: 1rem 3rem;
+            color: rgb(0, 255, 55);
+            background-color: rgba(0, 255, 55, 0.2);
+            border: 2px solid rgb(0, 255, 55);
+            transition: all .3s;
+            &:hover{
+                  
+            }
+        }
     }
 }
