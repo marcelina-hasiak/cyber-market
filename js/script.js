@@ -1,50 +1,44 @@
+//select buttons in popup form
+popupFormButtons = document.querySelectorAll('.popup__form__button')
+popupButtonElements = document.querySelectorAll('.btn-el')
+popup = document.querySelector('.popup')
 
+//start a fingerprint animation when seller or customer button are clicked
+sellerButton = document.querySelector('#seller-btn')
+sellerButton.addEventListener('click', () => {
+  animateFingerprint()
+  popup.classList.remove('popup-color-bg-blue')
+  popup.classList.add('popup-color-bg-pink')
+})
 
-    // const backgroundImages = [
-    //   "1.jpg",
-    //   "2.jpg",
-    //   "3.jpg",
-    //   "4.jpg",
-    // ];
-
-    // base = "../img/bg-";
-    // backgroundImages.forEach(function(img){
-    //   new Image().src = base + img;
-    // });
-  
-    // let count = 1;
-   
-    // $(".site-wrapper").css("background-image", 'url("' + base + backgroundImages[0] + '")');
-
-    // setInterval(function() {
-    //   $(".site-wrapper").css("background-image", 'url("' + base + backgroundImages[count] + '")');
-    //   count === backgroundImages.length - 1 ? (count = 0) : count++;
-    // }, 8000);
-
-
-/*var images = new Array()
-
-function preload() {
-  for (i = 0; i < preload.arguments.length; i++) {
-    images[i] = new Image()
-    images[i].src = preload.arguments[i]
-  }
+//fingerprint animation function by adding classes containing animation
+animateFingerprint = () => {
+  const fingerprint = document.querySelector('#fingerprint__path')
+  fingerprint.classList.add('fingerprint__path--animated')
+  const border = document.querySelectorAll('.fingerprint__border')
+  border.forEach((el) => {
+    el.classList.add('fingerprint__border--animated')
+  })
 }
-preload(
-  "../img/bg-1.jpg",
-  "../img/bg-2.jpg",
-  "../img/bg-3.jpg",
-  "../img/bg-4.jpg",
-  "../img/bg-5.jpg"
-)
 
-      let count = 1;
-   
-      $(".site-wrapper").css("background-image", 'url("' + images[0] + '")');
-      setInterval(function() {
-        
-        $(".site-wrapper").css("background-image", 'url("' + images[count] + '")');
-        count === images.length - 1 ? (count = 0) : count++;
-          
-      }, 8000);
-      */
+//changing buttons' class names in customer form
+customerButton = document.querySelector('#customer-btn')
+customerButton.addEventListener('click', () => {
+  animateFingerprint()
+  popup.classList.remove('popup-color-bg-pink')
+  popup.classList.add('popup-color-bg-blue')
+  popupFormButtons.forEach((el) => {
+    if(el.classList.contains('btn-neon--1')) {
+      el.classList.remove('btn-neon--1')
+      el.classList.add('btn-neon--2')
+    }
+  })
+
+  popupButtonElements[0].classList = "btn-neon--2__border"
+  popupButtonElements[1].classList = "btn-neon--2__bg"
+  popupButtonElements[2].classList = "btn-neon--2__text"
+  popupButtonElements[3].classList = "btn-neon--2__border"
+  popupButtonElements[4].classList = "btn-neon--2__bg"
+  popupButtonElements[5].classList = "btn-neon--2__text"
+})
+// console.log(window.getComputedStyle(document.querySelector('.popup'), ':before').setProperty('background-color', "yellow"))
