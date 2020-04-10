@@ -1,44 +1,54 @@
-//select buttons in popup form
+//POPUP DOM ELEMENTS
+popupBackground = document.querySelector('.popup')
 popupFormButtons = document.querySelectorAll('.popup__form__button')
 popupButtonElements = document.querySelectorAll('.btn-el')
-popup = document.querySelector('.popup')
+popupPasswordInput = document.querySelector('#password')
 
-//start a fingerprint animation when seller or customer button are clicked
+
+//HANDLING EVENTS WHEN SELLER BUTTON IS CLICKED
 sellerButton = document.querySelector('#seller-btn')
 sellerButton.addEventListener('click', () => {
   animateFingerprint()
-  popup.classList.remove('popup-color-bg-blue')
-  popup.classList.add('popup-color-bg-pink')
+  popupBackground.classList.add('popup-color-bg-pink')
+  popupFormButtons.forEach((el) => {
+    el.classList.add('btn-neon--1')
+  })
 })
 
-//fingerprint animation function by adding classes containing animation
+//HANDLING EVENTS WHEN CUSTOMER BUTTON IS CLICKED
+customerButton = document.querySelector('#customer-btn')
+customerButton.addEventListener('click', () => {
+  animateFingerprint()
+  popupBackground.classList.add('popup-color-bg-blue')
+  popupFormButtons.forEach((el) => {
+    el.classList.add('btn-neon--2')
+  })
+  popupButtonElements[0].classList = "btn-neon--2__border"
+  popupButtonElements[3].classList = "btn-neon--2__border"
+
+  //HANDLE EVENT WHEN THE LOGIN BUTTON IS CLICKED TYPING CORRECT PASSWORD
+  popupFormButtons[0].addEventListener('click', () =>{
+    if (popupPasswordInput.value === "697") {
+      location.assign("/hack.html")
+    } else {
+      location.assign("/index.html")
+    }
+  })
+})
+
+//CLOSE THE POPUP WINDOW BY BLICKING ON THE BACKGROUND
+document.querySelector('#popup').addEventListener('click', () => {
+  location.assign("/index.html")
+})
+document.querySelector('.popup').addEventListener('click', (event) => {
+  event.stopPropagation();
+})
+//HANDLING FINGERPRINT ANIMATION
 animateFingerprint = () => {
-  const fingerprint = document.querySelector('#fingerprint__path')
+  fingerprint = document.querySelector('#fingerprint__path')
   fingerprint.classList.add('fingerprint__path--animated')
-  const border = document.querySelectorAll('.fingerprint__border')
+  border = document.querySelectorAll('.fingerprint__border')
   border.forEach((el) => {
     el.classList.add('fingerprint__border--animated')
   })
 }
-
-//changing buttons' class names in customer form
-customerButton = document.querySelector('#customer-btn')
-customerButton.addEventListener('click', () => {
-  animateFingerprint()
-  popup.classList.remove('popup-color-bg-pink')
-  popup.classList.add('popup-color-bg-blue')
-  popupFormButtons.forEach((el) => {
-    if(el.classList.contains('btn-neon--1')) {
-      el.classList.remove('btn-neon--1')
-      el.classList.add('btn-neon--2')
-    }
-  })
-
-  popupButtonElements[0].classList = "btn-neon--2__border"
-  popupButtonElements[1].classList = "btn-neon--2__bg"
-  popupButtonElements[2].classList = "btn-neon--2__text"
-  popupButtonElements[3].classList = "btn-neon--2__border"
-  popupButtonElements[4].classList = "btn-neon--2__bg"
-  popupButtonElements[5].classList = "btn-neon--2__text"
-})
-// console.log(window.getComputedStyle(document.querySelector('.popup'), ':before').setProperty('background-color', "yellow"))
