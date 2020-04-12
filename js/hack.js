@@ -9,11 +9,13 @@ class StatusAccount {
     }
     saveStatusAccount() {
         localStorage.setItem('status-account', JSON.stringify(this.accountValue))
+        renderStatusAccount()
     }
     loadStatusAccount() {
         const statusAccountJSON = localStorage.getItem('status-account')
         try {
             this.accountValue = (statusAccountJSON ? JSON.parse(statusAccountJSON) : this.accountValue)
+            renderStatusAccount()
         } catch (error) {
             this.accountValue
         }
@@ -33,25 +35,27 @@ const renderStatusAccount = () => {
 }
 
 const setupNewAccount = () => {
-    mrLee = new StatusAccount(100000)
+    mrLee = new StatusAccount(1000000)
     mrLee.loadStatusAccount()
-    renderStatusAccount()
+    
 }
 const formatNumber = (number) => {
     return number.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1,')
 }
 
 document.querySelector('.account__form').addEventListener('submit', (el) => {
+    el.preventDefault()
     mrLee.calculateStatusAccount(Number(el.target.elements.text.value))
     el.target.elements.text.value = ""
     mrLee.saveStatusAccount()
-    renderStatusAccount()
+    window.setTimeout(() => {
+        location.assign("/index.html")
+    },1500)    
 })
 
 window.addEventListener('storage', (el) => {
     if (el.key === 'status-account') {
         mrLee.loadStatusAccount()
-        renderStatusAccount()
     }
 })
 setupNewAccount()

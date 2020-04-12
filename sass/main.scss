@@ -11,6 +11,11 @@ html {
     font-size: 62.5%; //10px
 }
 
+body {
+    overflow: hidden;
+    white-space: nowrap;
+}
+
 .site-wrapper {
     height: 100vh;
     background-image:   url(../img/bg-1.jpg),
@@ -34,12 +39,6 @@ html {
     66% {background-image: url(../img/bg-3.jpg);}
     100% {background-image: url(../img/bg-1.jpg);}
 }
-
-// @keyframes fade {
-// 0% {opacity: .7} 
-// 30% {opacity: 1} 
-// 100% {opacity: 1}
-// }
   
 .navigation {
     background-color: rgba(0, 0, 0, .8);
@@ -659,22 +658,6 @@ to {
     }
 }
 
-// @keyframes glitch-animation-#{$i} {
-//     $steps: 20;
-//     @for $i from 0 through $steps - 10 {
-//         #{percentage($i*(1/$steps))} {
-//             $top: random(160);
-//             $bottom: random(180);
-//             clip: rect(#{$top}px, 4000px, #{$bottom}px, 0);
-//         }
-//     }
-//     51% {
-//         clip: rect(0, 0, 0, 0)
-//     }
-//     100% {
-//         clip: rect(0, 0, 0, 0)
-//     }
-// }
 @keyframes turn-on {
     0% {
       transform: scale(1, .8) translate3d(0, 0, 0);
@@ -817,10 +800,7 @@ to {
 
 ///////////////////////////////////    ACCOUNT    //////////////////////////
 
-body {
-    overflow: hidden;
-    white-space: nowrap;
-}
+
 .hack-site {
     height: 100vh;
     position: relative;
