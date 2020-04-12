@@ -1,7 +1,5 @@
-//DOM ELEMENTS
-const body = document.querySelector('.body')
+const body = document.querySelector(".body")
 
-//POPUP MARKUP
 const createPopupWindow = (backgroundColor, buttonColor, reference) => {
   const markup = 
   `<div class="popup-enviroment" id="popup">
@@ -64,23 +62,23 @@ const createPopupWindow = (backgroundColor, buttonColor, reference) => {
       </form> 
     </div>
   </div>`
-  
-  body.insertAdjacentHTML('beforeend', markup)
+  body.insertAdjacentHTML("beforeend", markup)
 
   //CLOSE THE POPUP WINDOW BY BLICKING ON THE BACKGROUND
-  document.querySelector('#popup').addEventListener('click', () => {
+  document.querySelector("#popup").addEventListener("click", () => {
     location.assign("/index.html")
   })
-  document.querySelector('.popup').addEventListener('click', (event) => {
+  document.querySelector(".popup").addEventListener("click", (event) => {
     event.stopPropagation();
   })
   
-  const hackButton = document.querySelector('#hack-button')
-  //HANDLE EVENT WHEN THE LOGIN BUTTON IS CLICKED TYPING CORRECT PASSWORD
+  //GET AN ACCESS TO SECRET ACCOUNT
+  const hackButton = document.querySelector("#hack-button")
   if (hackButton) {
-    hackButton.addEventListener('click', () => {
-      const popupPasswordInput = document.querySelector('#password')
-      if (popupPasswordInput.value === "697") {
+    hackButton.addEventListener("click", () => {
+      const popupPasswordInput = document.querySelector("#password")
+      const popupEmailInput = document.querySelector("#email")
+      if (popupPasswordInput.value === "697" && popupEmailInput.value === "" ) {
         location.assign("/hack.html")
       } else {
         location.assign("/index.html")
@@ -88,26 +86,26 @@ const createPopupWindow = (backgroundColor, buttonColor, reference) => {
     })
   }
 }
-//CHECK IF MARKUP EXISTS AND DELETE IT IF IT SO
+
 const deleteMarkup = () => {
-  if (document.querySelector('#popup')) {
-    const markup = document.querySelector('#popup')
+  if (document.querySelector("#popup")) {
+    const markup = document.querySelector("#popup")
     markup.parentElement.removeChild(markup)
   }
 }
 
 //HANDLING EVENTS WHEN SELLER BUTTON IS CLICKED
-sellerButton = document.querySelector('#seller-btn')
-sellerButton.addEventListener('click', () => {
+sellerButton = document.querySelector("#seller-btn")
+sellerButton.addEventListener("click", () => {
   deleteMarkup()
-  createPopupWindow('popup-color-bg-pink', 'btn-neon--1', 'href="/index.html"')
+  createPopupWindow("popup-color-bg-pink", "btn-neon--1", "href=/index.html")
 })
 
 //HANDLING EVENTS WHEN CUSTOMER BUTTON IS CLICKED
-customerButton = document.querySelector('#customer-btn')
-customerButton.addEventListener('click', () => {
+customerButton = document.querySelector("#customer-btn")
+customerButton.addEventListener("click", () => {
   deleteMarkup()
-  createPopupWindow('popup-color-bg-blue', 'btn-neon--2', "id='hack-button'")
+  createPopupWindow("popup-color-bg-blue", "btn-neon--2", "id='hack-button'")
 })
 
 

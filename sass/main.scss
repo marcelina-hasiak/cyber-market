@@ -3,12 +3,12 @@
 *::after {
     margin: 0;
     padding: 0;
-    box-sizing: inherit; //specifies that a property should inherit its value from its parent element
+    box-sizing: inherit; 
 }
 
 html {
-    box-sizing: border-box; //	The width and height properties (and min/max properties) includes content, padding and border
-    font-size: 62.5%; //10px
+    box-sizing: border-box; 
+    font-size: 62.5%; 
 }
 
 body {
@@ -330,7 +330,6 @@ body {
         animation-play-state: paused;
     }
     
-    
     &__text-1,
     &__text-2 {
         text-transform: uppercase;
@@ -362,14 +361,12 @@ body {
             &--5 {
                 animation: flicker .5s infinite step-end;
             }
-
         }
     }
 
     &__text-1{
         animation: scroll-1 40s linear infinite;
-        animation-delay: -20s;
-        
+        animation-delay: -20s;    
     }
     &__text-2{
         animation: scroll-2 40s linear infinite;
