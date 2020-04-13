@@ -98,14 +98,14 @@ const deleteMarkup = () => {
 sellerButton = document.querySelector("#seller-btn")
 sellerButton.addEventListener("click", () => {
   deleteMarkup()
-  createPopupWindow("popup-color-bg-pink", "btn-neon--1", "href=/index.html")
+  createPopupWindow("popup__before-el---pink", "btn-neon--1", "href=/index.html")
 })
 
 //HANDLING EVENTS WHEN CUSTOMER BUTTON IS CLICKED
 customerButton = document.querySelector("#customer-btn")
 customerButton.addEventListener("click", () => {
   deleteMarkup()
-  createPopupWindow("popup-color-bg-blue", "btn-neon--2", "id='hack-button'")
+  createPopupWindow("popup__before-el--blue", "btn-neon--2", "id='hack-button'")
 })
 
 

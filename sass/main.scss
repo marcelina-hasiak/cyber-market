@@ -1,22 +1,35 @@
-*,
-*::before,
-*::after {
-    margin: 0;
-    padding: 0;
-    box-sizing: inherit; 
+@import "base";
+@import "keyframes";
+@import "account-layout";
+@import "forms";
+
+
+@mixin btn-neon-border {
+    stroke: #ffffff;
+    stroke-width: .5rem;
+    stroke-dasharray: 50 900;
+    stroke-dashoffset: 50;
+    transition: stroke-dashoffset 1.3s ease-in-out;  
 }
 
-html {
-    box-sizing: border-box; 
-    font-size: 62.5%; 
+@mixin btn-neon-bg {
+    fill:none;
+    stroke: #ffffff;   
+    stroke-width: .2rem;
 }
 
-body {
-    overflow: hidden;
-    white-space: nowrap;
+@mixin btn-neon-text {
+    font-family: "Share Tech Mono";
+    font-size: 3.6rem;
+    fill:#ffffff;
+    @include respond(big-desktop) { 
+        font-size: 3.8rem;
+    }
 }
+
 
 .site-wrapper {
+    overflow: hidden;
     height: 100vh;
     background-image:   url(../img/bg-1.jpg),
                         url(../img/bg-2.jpg),
@@ -28,40 +41,42 @@ body {
     overflow: hidden; 
     display: grid;
     grid-template-rows: 1fr repeat(3, minmax(min-content, 1.5fr)) min-content .5fr;
-    grid-template-columns: [bars-start] 10vw [content-start] repeat(4, [col-start] 1fr [col-end]) [content-end] 10vw [bars-end];
+    grid-template-columns: [bars-start] 13vw [content-start] repeat(4, [col-start] 1fr [col-end]) [content-end] 7vw [bars-end];
     grid-row-gap: 3rem;
     grid-column-gap: 5rem;
+    @include respond(tab-land) { 
+        grid-template-columns: [bars-start] 7vw [content-start] repeat(4, [col-start] 1fr [col-end]) [content-end] 3vw [bars-end];
+    }
+    @include respond(tab-port) { 
+        grid-template-columns: [bars-start] min-content [content-start] repeat(4, [col-start] 1fr [col-end]) [content-end] 3vw [bars-end];
+    }
     
 }
-@keyframes changebg {
-    0% {background-image: url(../img/bg-1.jpg);}
-    33% {background-image: url(../img/bg-2.jpg);}
-    66% {background-image: url(../img/bg-3.jpg);}
-    100% {background-image: url(../img/bg-1.jpg);}
-}
-  
+
 .navigation {
+    
     background-color: rgba(0, 0, 0, .8);
     border-bottom: .1rem solid #ffffff;
     padding: 2rem 3rem;
     height: 7rem;
-    
     grid-column: bars-start / bars-end;
-
     display: flex;
     align-items: center;
+    justify-content: space-between;
+    @include respond(big-desktop) { 
+        height: 8rem;
+    }
 }
 
 .main-nav {
-    width: 25vw;
     list-style-type: none;
-
+    padding-left: 2rem;
+    width: 25vmax;
     display: flex;
     align-items: center;
     justify-content: space-around;
   
-    &__element{
-
+    &__element {
         margin-right: 2rem;
 
         & > a {
@@ -70,11 +85,18 @@ body {
         }
         
         &__icon {
-        
             width: 4rem;
             height: 4rem;
             fill: #ffffff;
             transition: .3s all;
+            @include respond(big-desktop) { 
+                width: 4.5rem;
+                height: 4.5rem;
+            }
+            @include respond(tab-land) { 
+                width: 3rem;
+                height: 3rem;
+            }
 
             &:hover {
                 transform:scale(0.9);
@@ -83,30 +105,31 @@ body {
             &--instagram {
                 fill: url(#Gradient-instagram);
                 filter: drop-shadow(0 0 2px #ffffff) drop-shadow( 0 0 10px #ffffff);
-                animation: flicker 6s infinite step-end;
+                animation: flicker-1 6s infinite step-end;
             }
                 
             &--youtube {
                 filter: drop-shadow(0 0 20px #ffffff);
-                animation: flicker 6s infinite 2s step-end;
+                animation: flicker-1 6s infinite 2s step-end;
                 fill: #ffffff;
             }
     
             &--whatsapp {
                 filter: drop-shadow(0 0 20px #ffffff);
-                animation: flicker 5s infinite step-end;
+                animation: flicker-1 5s infinite step-end;
                 fill: #ffffff;
             }
     
             &--reddit {
                 filter: drop-shadow(0 0 20px #ffffff);
-                animation: flicker 6s infinite 1s step-end;
+                animation: flicker-1 6s infinite 1s step-end;
                 fill: #ffffff;
             }
     
             &--github {
                 filter: drop-shadow(0 0 20px #ffffff);
-                animation: flicker 5s infinite step-end;
+                animation: flicker-1 5s infinite step-end;
+                margin-right: 3rem;
             }
         }
 
@@ -133,17 +156,6 @@ body {
     }
 }
 
-@keyframes flicker {
-    0%    { opacity: 1;   }
-    3%    { opacity: 0.4; }
-    6%    { opacity: 1;   }
-    7%    { opacity: 0.4; }
-    8%    { opacity: 1;   }
-    9%    { opacity: 0.4; }
-    10%   { opacity: 1;   }
-    100%  { opacity: 1;   }
-}
-
 @for $i from 1 through 4 {
     @keyframes glitch-animation-#{$i} {
         $steps: 20;
@@ -167,9 +179,21 @@ body {
     font-family: "Share Tech Mono";
     color: #ffffff;
     font-size: 2.5rem;
-    width: 70vw;
+    padding-right: 2rem;
     text-align: end;
     white-space: nowrap;
+    @include respond(big-desktop) { 
+        font-size: 3rem;
+    }
+    @include respond(small-desktop) { 
+        font-size: 2.3rem;
+    }
+    @include respond(tab-land) { 
+        font-size: 2rem;
+    }
+    @include respond(tab-land) { 
+        white-space: normal;
+    }
 }
 
 .main-title {
@@ -183,6 +207,16 @@ body {
     text-shadow: 6px 6px 10px rgba(0, 0, 0, .99);
     text-align: end;
     grid-column: col-start 1 / col-end 4; 
+
+    @include respond(big-desktop) { 
+        font-size: 21rem;
+    }
+    @include respond(small-desktop) { 
+        font-size: 17rem;
+    }
+    @include respond(tab-land) { 
+        font-size: 15rem;
+    }
 
     &--0 {
         grid-row: 2 / 3;  
@@ -220,14 +254,7 @@ body {
         clip: rect(85px, 700px, 140px, 0);
     }
 }
-@keyframes btn-border-animation {
-    from {
-        stroke-dashoffset: 50;
-    }
-    to {
-        stroke-dashoffset: -900;
-    }
-} 
+
 .btn-neon {
     text-decoration: none;
     text-align: center;
@@ -235,6 +262,14 @@ body {
     
     & > svg {
         transition: .2s all;
+        @include respond(big-desktop) { 
+            width: 350px;
+            height: 76px;
+        }
+        @include respond(tab-land) { 
+            width: 300px;
+            height: 66px;
+        }
     }
 
     &--1 {
@@ -256,23 +291,15 @@ body {
     
         &__border {
             fill:rgba(237, 37, 129, 0.8);
-            stroke: #ffffff;
-            stroke-width: .5rem;
-            stroke-dasharray: 50 900;
-            stroke-dashoffset: 50;
-            transition: stroke-dashoffset 1.3s ease-in-out  
+            @include btn-neon-border;
         }
 
         &__bg {
-            fill:none;
-            stroke: #ffffff;   
-            stroke-width: .2rem;
+            @include btn-neon-bg;
         }
         
         &__text {
-            font-family: "Share Tech Mono";
-            font-size: 3.6rem;
-            fill:#ffffff;
+            @include btn-neon-text;
         }
     } 
 
@@ -295,23 +322,15 @@ body {
 
         &__border {
             fill: rgba(62, 192, 235, 0.8);
-            stroke: #ffffff;   
-            stroke-width: .5rem;
-            stroke-dasharray: 50 900;
-            stroke-dashoffset: 50;
-            transition: stroke-dashoffset 1.3s ease-in-out    
+            @include btn-neon-border;    
         }
 
         &__bg {
-            fill: none;
-            stroke: #ffffff;   
-            stroke-width: .2rem;
+            @include btn-neon-bg;
         }
         
         &__text {
-            font-family: "Share Tech Mono";
-            font-size: 3.6rem;
-            fill:#ffffff;
+            @include btn-neon-text;
         }    
     }
 }
@@ -325,6 +344,9 @@ body {
     overflow: hidden;
     grid-column: bars-start / bars-end;
     display: flex;
+    @include respond(big-desktop) { 
+        height: 8rem;
+    }
 
     &:hover > * {
         animation-play-state: paused;
@@ -336,7 +358,17 @@ body {
         font-family: "Share Tech Mono";
         color: white;
         font-size: 3.5rem;
-        padding: 1.5rem 0;   
+        padding: 1.5rem 0;  
+
+        @include respond(big-desktop) { 
+            font-size: 4rem;
+        }
+        @include respond(small-desktop) { 
+            font-size: 3.3rem;
+        } 
+        @include respond(tab-land) { 
+            font-size: 3rem;
+        }
 
         & > .letter {
             text-transform: uppercase;
@@ -347,19 +379,19 @@ body {
                             0 0 10px #fff,
                             0 0 20px #fff;
             &--1 {
-                animation: flicker 2.5s infinite step-end;
+                animation: flicker-1 2.5s infinite step-end;
             }
             &--2 {
-                animation: flicker 2s infinite step-end;
+                animation: flicker-1 2s infinite step-end;
             }
             &--3 {
-                animation: flicker 1s infinite step-end;
+                animation: flicker-1 1s infinite step-end;
             }
             &--4 {
-                animation: flicker 2s infinite step-end;
+                animation: flicker-1 2s infinite step-end;
             }
             &--5 {
-                animation: flicker .5s infinite step-end;
+                animation: flicker-1 .5s infinite step-end;
             }
         }
     }
@@ -371,548 +403,5 @@ body {
     &__text-2{
         animation: scroll-2 40s linear infinite;
         animation-delay: 0s;
-    }
-}
-
-@keyframes scroll-1 {
-    from {
-      transform: translateX(100%);
-    }
-    to {
-      transform: translateX(-100%);
-    }
-}
-  
-@keyframes scroll-2 {
-from {
-    transform: translateX(0%);
-}
-to {
-    transform: translateX(-200%);
-    }
-}
-///////////////POPUP/////////////////
-.popup-enviroment {
-    position: absolute;
-    overflow: hidden;
-    top: 0;
-    display: grid;
-    justify-content: center;
-    align-items: center;
-    height: 100%;
-    width: 100%;
-    font-size: 3rem;
-    font-family: "Share Tech Mono";
-    letter-spacing: 4px;
-    background-color: rgba(0, 0, 0, 0.95);
-    padding: 3rem;
-    z-index: 100;
-    opacity: 0;
-    visibility: hidden;
-    transition: all .9s;
-    &:target {
-        opacity: 1;
-        visibility: visible;
-    }
-    &:target .popup {
-        opacity: 1;
-        visibility: visible;
-        transform: scale(1);
-    }
-}
-.popup-color-bg-pink {
-    &::before {
-        content: "";
-        position: absolute;
-        top: 15px;
-        bottom: 10px;
-        left: 15px;
-        right: 15px;
-        z-index: -100;
-        background-color:rgba(237, 37, 129, 0.7);
-        box-shadow: 
-          0px 0px 5px 1px rgba(255,255,255,1),
-          0px 0px 5px 1px rgba(255,255,255,1),
-          0px 0px 5px 2px rgba(255,255,255,1);
-        filter: blur(45px) contrast(110%);
-    }
-}
-.popup-color-bg-blue {
-    &::before {
-        content: "";
-        position: absolute;
-        top: 15px;
-        bottom: 10px;
-        left: 15px;
-        right: 15px;
-        z-index: -100;
-        background-color:rgba(62, 192, 235, 0.8);
-        box-shadow: 
-          0px 0px 5px 1px rgba(255,255,255,1),
-          0px 0px 5px 1px rgba(255,255,255,1),
-          0px 0px 5px 2px rgba(255,255,255,1);
-        filter: blur(45px) contrast(110%);
-    }
-}
-.popup {
-    width: min-content;
-    padding: 6rem 14rem 8rem 14rem;
-    position: relative;
-    border: 1px solid white;
-    border-radius: .4rem;
-    transform: scale(.25);
-    transition: all .4s .1s;
-    opacity: 0;
-    visibility: hidden;
-    white-space: nowrap;
-    
-    &__heading {
-        display: flex;
-        justify-content: space-between;
-        
-        &__tittle {
-            align-self: center;
-            letter-spacing: 5px;
-            color: #fff;
-            font-size: 7rem;
-            padding: 0 4rem 0 0 ;
-        }
-        &__svg {
-            width: 16rem;
-            height: 16rem;
-        }
-
-        &__close-button {
-            &,
-            &:link,
-            &:visited {
-            text-decoration: none;
-            display: inline-block;
-            color: rgba(255,255,255, 1);
-            font-size: 6rem;
-            transition: all .2s;
-            line-height: .5;
-            align-self: flex-start;
-            position: absolute;
-            top: 0;
-            right: 0;
-            padding: 2rem;
-            }
-
-            &:hover {
-                text-shadow:  
-                    0 0 .5rem rgba(255,255,255, 1),
-                    0 0 2.5rem rgba(255,255,255, 1),
-                    0 0 5rem rgba(255,255,255, 1);
-                background: none;
-            }
-        }
-    }
-
-    &__form {
-        display: grid;
-        grid-template-rows: repeat(4, minmax(min-content, .5fr));
-        grid-template-columns: 1fr 1fr;
-        grid-row-gap: 2.5rem;
-        grid-column-gap: 5rem;
-        color: rgba(255,255,255, 1);
-        letter-spacing: 2px;
-
-        & div:nth-child(1) {
-            grid-column: 1/3;
-            grid-row: 1/3;
-        }
-        & div:nth-child(2) {
-            grid-column:1/3;
-            grid-row: 2/3;
-        }
-       
-        & div:nth-child(5) {
-            grid-column: 1/3;
-            grid-row: 4/5;
-        }
-       
-        & a:nth-child(3) {
-            grid-column: 1/2;
-            grid-row: 3/4;
-        }
-        & a:nth-child(4) {
-            grid-column: 2/3;
-            grid-row: 3/4;
-        }
-
-        &__button {
-           
-            & > svg:hover{
-                box-shadow: 
-                    0 0 .5rem rgba(255,255,255, 1),
-                    0 0 2.5rem rgba(255,255,255, 1),
-                    0 0 5rem rgba(255,255,255, 1);
-                background-color: none;
-            }    
-        }
-        &__container {
-            & input {
-                display: block;
-                width: 100%;
-                padding: 5px 0;
-                outline: none;
-                border: none;
-                border-bottom: 3px solid rgba(255,255,255, 1);
-                background: transparent;
-                color: rgba(255,255,255, 1);
-                font-size: 2rem;
-                font-family: "Share Tech Mono";
-                filter: none;
-
-                &:focus + label {
-                opacity: 1;
-                visibility: visible;
-                transform: translateY(0rem);
-                }
-                &:focus:invalid {
-                border-bottom: 3px solid rgb(88, 88, 88);
-                
-                }
-                &:invalid, input:-moz-ui-invalid {
-                border-bottom: 2px solid rgb(88, 88, 88);
-                
-                outline:none;
-                box-shadow:none;
-                -moz-box-shadow:none;
-                -webkit-box-shadow:none;
-                }
-
-                &::placeholder {
-                    color:#eee;
-                    font-size: 1.5rem;
-                    &:focus {
-                      opacity: 0;
-                      visibility: hidden;
-                    }
-                }
-            }
-
-            & label {
-                display: block;
-                padding: 1rem 0 0 0;
-                transform: translateY(-4rem);
-                font-size: 1.5rem;
-                opacity: 0;
-                visibility: hidden;
-                transition: all .3s;
-            }
-            & p a {
-            color: rgb(255, 255, 255);
-            font-size: 2rem;
-                &:hover {
-                    text-shadow:  
-                        0 0 .5rem rgba(255,255,255, 1),
-                        0 0 2.5rem rgba(255,255,255, 1),
-                        0 0 5rem rgba(255,255,255, 1);
-                }
-            }
-        }
-    }
-}
-
-
-////////////// SVG FINGERPRINT ///////////////////
-.fingerprint__path--animated {
-    stroke-dasharray: 160;
-    stroke-dashoffset: 160;
-    transition: stroke-dashoffset 1s ease;
-    animation: fingerprint-animation 3s .3s ease forwards; 
-    opacity:0;
-}
-
-.fingerprint__border--animated {
-    stroke-dasharray: 300;
-    stroke-dashoffset: 300;
-    transition: stroke-dashoffset 1s ease-out;
-    animation: border-animation 2s .3s ease-out forwards; 
-    opacity: 0;
-}
-  
-@keyframes fingerprint-animation {
-    from {
-        stroke-dashoffset: 160;
-        opacity: 0;
-    }
-    to {
-        stroke-dashoffset: 0;
-        opacity: 1;
-    }
-}
-@keyframes border-animation {
-    from {
-        stroke-dashoffset: 300;
-        opacity: 0;
-    }
-    to {
-        stroke-dashoffset: 0;
-        opacity: 1;
-    }
-}
-
-@keyframes turn-on {
-    0% {
-      transform: scale(1, .8) translate3d(0, 0, 0);
-      opacity: .1;
-    }
-    2%{
-        transform: scale(1.09139, 1.34235) translate3d(0, -100%, 0)
-    }
-    4% {
-      transform: scale(1.09139, 1.34235) translate3d(0, 100%, 0);
-      opacity: .7;
-    }
-    6% {
-        transform: scale(.63084, 1.40698) translate3d(0, -100%, 0)
-    }
-    8% {
-        transform: scale(.75142, 1.34118) translate3d(0, 100%, 0)
-    }
-    10% {
-        transform: scale(.63084, 1.40698) translate3d(0, -100%, 0)
-    }
-    12% {
-        transform: scale(1.38602, 1.14399) translate3d(0, 100%, 0)
-    }
-    14% {
-        transform: scale(.97038, .71092) translate3d(0, -100%, 0)
-    }
-    16% {
-        transform: scale(.75142, 1.34118) translate3d(0, 100%, 0)
-    }
-    18% {
-        transform: scale(.63084, 1.40698) translate3d(0, -100%, 0)
-    }
-    20% {
-        transform: scale(.75142, 1.34118) translate3d(0, 100%, 0)
-    }
-    22% {
-        transform: scale(.96173, 1.36858) translate3d(0, -100%, 0)
-    }
-    26% {
-        transform: scale(1.1348, 1.02729) translate3d(0, 100%, 0)
-    }
-    28% {
-        transform: scale(.63084, 1.40698) translate3d(0, -100%, 0)
-    }
-    30% {
-        transform: scale(1.38602, 1.14399) translate3d(0, 100%, 0)
-    }
-    32% {
-      transform: scale(.97038, .71092) translate3d(0, -100%, 0)
-    }
-    34% {
-      transform: scale(.6067, 1.31101) translate3d(0, 100%, 0)
-    }
-    36% {
-      transform: scale(.786, .9326) translate3d(0, -100%, 0)
-    }
-    38% {
-      transform: scale(1.38602, 1.14399) translate3d(0, 100%, 0)
-    }
-    40% {
-      transform: scale(.69973, .90412) translate3d(0, -100%, 0)
-    }
-    41% {
-      transform: scale(1, 1) translate3d(0, 0, 0);
-      filter: brightness(1) saturate(1);
-      opacity: 0
-    }
-    100% {
-      transform: scale(1, 1) translate3d(0, 0, 0);
-      opacity: 1;
-    }
-  }
-@keyframes flicker-2 {
-0% {
-    opacity: .86139
-}
-5% {
-    opacity: .12793
-}
-10% {
-    opacity: .36759
-}
-15% {
-    opacity: .9766
-}
-20% {
-    opacity: .61364
-}
-25% {
-    opacity: .94477
-}
-30% {
-    opacity: .57811
-}
-35% {
-    opacity: .03416
-}
-40% {
-    opacity: .21835
-}
-45% {
-    opacity: .62054
-}
-50% {
-    opacity: .89452
-}
-55% {
-    opacity: .89997
-}
-60% {
-    opacity: .37872
-}
-65% {
-    opacity: .04929
-}
-70% {
-    opacity: .14477
-}
-75% {
-    opacity: .27512
-}
-80% {
-    opacity: .84701
-}
-85% {
-    opacity: .85952
-}
-90% {
-    opacity: .76553
-}
-95% {
-    opacity: .91372
-}
-100% {
-    opacity: .05536
-}
-}
-
-
-///////////////////////////////////    ACCOUNT    //////////////////////////
-
-
-.hack-site {
-    height: 100vh;
-    position: relative;
-    background: url(../img/bg-account.png);
-    &::after {
-        content:"";
-        position: absolute;
-        top:0;
-        left:0;
-        width: 100%;
-        height: 100%;
-        background: rgba(49, 45, 45, .2);
-        animation: flicker-2 .15s infinite;
-    }
-}
-.account {
-    position: absolute;
-    top: 0;
-    left: 0;
-    height: 100vh;
-    width:100%;
-    font-family: "Oxanium";
-    font-size: 6rem;
-    letter-spacing: .5rem;
-    color: rgb(0, 255, 55);
-    text-shadow: 0 0 .5rem rgb(0, 255, 55),
-                0 0 2.5rem rgb(0, 255, 55);
-    display: grid;
-    grid-template-columns: auto 1fr auto;
-    grid-template-rows: min-content repeat(7, minmax(min-content, 1fr)) minmax(3rem, .5fr);
-    align-items: center;
-    justify-items:center;
-    gap: 1.5rem;
-    animation: turn-on 5s .5s cubic-bezier(.1,.57,.72,1.03) forwards;
-    opacity: 0;
-
-    &__title{
-        grid-column: 2/3;
-        grid-row: 2/3;
-    }
-
-    &__subtitle{
-        grid-column: 2/3;
-        
-        &--1{
-            grid-row: 3/4;
-        }
-        &--2{
-            grid-row: 5/6;
-        }
-    }
-
-    &__decorative-trail {
-        grid-column: 1/-1;
-        background: url(../img/pattern.png) no-repeat center; 
-        width: 100%;
-        height: 2rem;
-
-        &--1{
-            grid-row: 4/5;   
-        }
-        &--2{
-            grid-row: 7/8;
-        }
-    }
-    &__status {
-        grid-column: 2/3;
-        grid-row: 6/7;
-        font-size: 3rem;
-        & span {
-            font-size: 4rem;
-        }
-    }
-    &__form {
-        grid-column: 2/3;
-        grid-row: 8/9;
-        display: flex;
-        justify-content: space-around;
-
-        &__input {
-            width: 40%;
-            background-color: rgba(0, 255, 55, 0.2);
-            border: none;
-            border-bottom: 2px solid rgb(0, 255, 55);
-            color: rgb(0, 255, 55);
-            text-shadow: 0 0 .5rem rgb(0, 255, 55),
-                0 0 2.5rem rgb(0, 255, 55);
-            font-size: 4rem;
-            font-family: "Oxanium";
-            text-align: end; 
-            padding: 0 1rem;
-            filter: none;
-            outline: none;
-            &::placeholder {
-                color: rgba(0, 255, 55, 0.6);
-                text-shadow:none;
-            }
-        }
-        
-        &__button{
-            width: 40%;
-            text-decoration: none;
-            font-size: 4rem;
-            font-family: "Oxanium";
-            padding: 1rem 3rem;
-            color: rgb(0, 255, 55);
-            background-color: rgba(0, 255, 55, 0.2);
-            border: 2px solid rgb(0, 255, 55);
-            transition: all .3s;
-            animation: flicker 2s 8s alternate infinite step-end;
-            transition: transform .2s;
-            cursor: pointer;
-            &:hover {
-                transform: scale(1.05);
-            }
-        }
     }
 }
