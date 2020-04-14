@@ -31,6 +31,7 @@
     opacity: 0;
     visibility: hidden;
     transition: all .9s;
+    
     @include respond(tab-land) { 
         font-size: 2rem;
     }
@@ -56,6 +57,7 @@
     opacity: 0;
     visibility: hidden;
     white-space: nowrap;
+
     @include respond(tab-land) { 
         padding: 5rem 10rem 6rem 10rem;
     }
@@ -83,6 +85,7 @@
             color: #fff;
             font-size: 7rem;
             padding: 0 4rem 0 0;
+
             @include respond(tab-land) { 
                 font-size: 6rem;
             }
@@ -90,6 +93,7 @@
         &__svg {
             width: 16rem;
             height: 16rem;
+
             @include respond(tab-land) { 
                 width: 15rem;
                 height: 15rem;
@@ -140,12 +144,10 @@
             grid-column:1/3;
             grid-row: 2/3;
         }
-       
         & div:nth-child(5) {
             grid-column: 1/3;
             grid-row: 4/5;
         }
-       
         & a:nth-child(3) {
             grid-column: 1/2;
             grid-row: 3/4;
@@ -157,7 +159,7 @@
 
         &__button {
            
-            & > svg:hover{
+            & > svg:hover {
                 box-shadow: 
                     0 0 .5rem rgba(255,255,255, 1),
                     0 0 2.5rem rgba(255,255,255, 1),
@@ -180,20 +182,17 @@
                 filter: none;
 
                 &:focus + label {
-                opacity: 1;
-                visibility: visible;
-                transform: translateY(0rem);
+                    opacity: 1;
+                    visibility: visible;
+                    transform: translateY(0rem);
                 }
                 &:focus:invalid {
-                border-bottom: 3px solid rgba(237, 37, 129, 1);
+                    border-bottom: 3px solid rgba(237, 37, 129, 1);
                 }
                 &:invalid, input:-moz-ui-invalid {
-                border-bottom: 3px solid rgba(237, 37, 129, 1);
-                
-                outline:none;
-                box-shadow:none;
-                -moz-box-shadow:none;
-                -webkit-box-shadow:none;
+                    border-bottom: 3px solid rgba(237, 37, 129, 1);
+                    outline:none;
+                    box-shadow:none;
                 }
 
                 &::placeholder {
@@ -216,8 +215,8 @@
                 transition: all .3s;
             }
             & p a {
-            color: rgb(255, 255, 255);
-            font-size: 2rem;
+                color: rgb(255, 255, 255);
+                font-size: 2rem;
                 &:hover {
                     text-shadow:  
                         0 0 .5rem rgba(255,255,255, 1),

@@ -22,6 +22,7 @@
     font-family: "Share Tech Mono";
     font-size: 3.6rem;
     fill:#ffffff;
+
     @include respond(big-desktop) { 
         font-size: 3.8rem;
     }
@@ -44,10 +45,11 @@
     grid-template-columns: [bars-start] 13vw [content-start] repeat(4, [col-start] 1fr [col-end]) [content-end] 7vw [bars-end];
     grid-row-gap: 3rem;
     grid-column-gap: 5rem;
-    @include respond(tab-land) { 
+
+    @include respond(small-desktop) { 
         grid-template-columns: [bars-start] 7vw [content-start] repeat(4, [col-start] 1fr [col-end]) [content-end] 3vw [bars-end];
     }
-    @include respond(tab-port) { 
+    @include respond(tab-land) { 
         grid-template-columns: [bars-start] min-content [content-start] repeat(4, [col-start] 1fr [col-end]) [content-end] 3vw [bars-end];
     }
     
@@ -63,6 +65,7 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
+
     @include respond(big-desktop) { 
         height: 8rem;
     }
@@ -89,11 +92,12 @@
             height: 4rem;
             fill: #ffffff;
             transition: .3s all;
+
             @include respond(big-desktop) { 
                 width: 4.5rem;
                 height: 4.5rem;
             }
-            @include respond(tab-land) { 
+            @include respond(small-desktop) { 
                 width: 3rem;
                 height: 3rem;
             }
@@ -156,42 +160,21 @@
     }
 }
 
-@for $i from 1 through 4 {
-    @keyframes glitch-animation-#{$i} {
-        $steps: 20;
-        @for $i from 0 through $steps - 10 {
-            #{percentage($i*(1/$steps))} {
-                $top: random(160);
-                $bottom: random(180);
-                clip: rect(#{$top}px, 4000px, #{$bottom}px, 0);
-            }
-        }
-        51% {
-            clip: rect(0, 0, 0, 0)
-        }
-        100% {
-            clip: rect(0, 0, 0, 0)
-        }
-    }
-}
-
 .location {
     font-family: "Share Tech Mono";
     color: #ffffff;
     font-size: 2.5rem;
-    padding-right: 2rem;
+    letter-spacing: .3rem;
     text-align: end;
-    white-space: nowrap;
+
     @include respond(big-desktop) { 
         font-size: 3rem;
     }
-    @include respond(small-desktop) { 
+    @include respond(medium-desktop) { 
         font-size: 2.3rem;
     }
-    @include respond(tab-land) { 
+    @include respond(small-desktop) { 
         font-size: 2rem;
-    }
-    @include respond(tab-land) { 
         white-space: normal;
     }
 }
@@ -211,10 +194,10 @@
     @include respond(big-desktop) { 
         font-size: 21rem;
     }
-    @include respond(small-desktop) { 
+    @include respond(medium-desktop) { 
         font-size: 17rem;
     }
-    @include respond(tab-land) { 
+    @include respond(small-desktop) { 
         font-size: 15rem;
     }
 
@@ -237,7 +220,6 @@
             animation: glitch-animation-4 2s .5s linear infinite alternate-reverse;
         }
     }
-    
     &::before,
     &::after {
         content: attr(data-text);
@@ -266,7 +248,7 @@
             width: 350px;
             height: 76px;
         }
-        @include respond(tab-land) { 
+        @include respond(small-desktop) { 
             width: 300px;
             height: 66px;
         }
@@ -284,20 +266,16 @@
                         0 0 20rem rgba(237, 37, 129, 1); 
             transform: scale(1.1);  
         }
-        
         svg:hover .btn-neon--1__border {
             stroke-dashoffset: -900; 
         }
-    
         &__border {
             fill:rgba(237, 37, 129, 0.8);
             @include btn-neon-border;
         }
-
         &__bg {
             @include btn-neon-bg;
         }
-        
         &__text {
             @include btn-neon-text;
         }
@@ -315,20 +293,16 @@
                         0 0 20rem rgba(62, 192, 235, 1);
             transform: scale(1.1);
         }
-        
         svg:hover .btn-neon--2__border {
             stroke-dashoffset: -900;
         }
-
         &__border {
             fill: rgba(62, 192, 235, 0.8);
             @include btn-neon-border;    
         }
-
         &__bg {
             @include btn-neon-bg;
         }
-        
         &__text {
             @include btn-neon-text;
         }    
@@ -351,7 +325,6 @@
     &:hover > * {
         animation-play-state: paused;
     }
-    
     &__text-1,
     &__text-2 {
         text-transform: uppercase;
@@ -363,13 +336,12 @@
         @include respond(big-desktop) { 
             font-size: 4rem;
         }
-        @include respond(small-desktop) { 
+        @include respond(medium-desktop) { 
             font-size: 3.3rem;
         } 
-        @include respond(tab-land) { 
+        @include respond(small-desktop) { 
             font-size: 3rem;
         }
-
         & > .letter {
             text-transform: uppercase;
             font-family: "Share Tech Mono";

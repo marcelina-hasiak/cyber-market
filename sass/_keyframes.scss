@@ -5,6 +5,25 @@
     100% {background-image: url(../img/bg-1.jpg);}
 };
 
+@for $i from 1 through 4 {
+    @keyframes glitch-animation-#{$i} {
+        $steps: 20;
+        @for $i from 0 through $steps - 10 {
+            #{percentage($i*(1/$steps))} {
+                $top: random(160);
+                $bottom: random(180);
+                clip: rect(#{$top}px, 4000px, #{$bottom}px, 0);
+            }
+        }
+        51% {
+            clip: rect(0, 0, 0, 0)
+        }
+        100% {
+            clip: rect(0, 0, 0, 0)
+        }
+    }
+}
+
 @keyframes flicker-1 {
     0%    { opacity: 1;   }
     3%    { opacity: 0.4; }
