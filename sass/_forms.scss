@@ -187,10 +187,10 @@
                     transform: translateY(0rem);
                 }
                 &:focus:invalid {
-                    border-bottom: 3px solid rgba(237, 37, 129, 1);
+                    border-bottom: 3px solid rgb(197, 197, 197);
                 }
                 &:invalid, input:-moz-ui-invalid {
-                    border-bottom: 3px solid rgba(237, 37, 129, 1);
+                    border-bottom: 3px solid rgb(197, 197, 197);
                     outline:none;
                     box-shadow:none;
                 }
