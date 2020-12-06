@@ -27,7 +27,7 @@ const createPopupWindow = (backgroundColor, buttonColor, reference) => {
               <path class="fingerprint__border--animated" fill="none" stroke="#DDDDDD" stroke-width="4" stroke-linecap="round" stroke-miterlimit="3" d="M75.516,151.084H5.75
                   c-2.209,0-4-1.831-4-4.09V76.751V6.173c0-2.258,1.791-4.089,4-4.089h70"/>
           </svg>
-          <a href="/index.html" class="popup__heading__close-button">&times;</a>
+          <a href="index.html" class="popup__heading__close-button">&times;</a>
       </div>
       <form class="popup__form"> 
         <div class="popup__form__container">
@@ -47,7 +47,7 @@ const createPopupWindow = (backgroundColor, buttonColor, reference) => {
                 <text class="${buttonColor}__text" transform="matrix(1 0 0 1 125.4106 49.666)">LOGIN</text>
             </svg>
         </a>
-        <a class="btn-neon ${buttonColor}" href="/index.html">
+        <a class="btn-neon ${buttonColor}" href="index.html">
             <svg width="340px" height="74px" viewBox="0 0 350 76">
                 <rect class="${buttonColor}__border" width="350" height="76"/>
                 <rect class="${buttonColor}__bg" width="350" height="76"/>
@@ -56,7 +56,7 @@ const createPopupWindow = (backgroundColor, buttonColor, reference) => {
         </a>
         <div class="popup__form__container"> 
             <p>Forgotten Password: 
-            <a href="/index.html">Click here</a>
+            <a href="index.html">Click here</a>
             </p>
         </div>
       </form> 
@@ -66,7 +66,7 @@ const createPopupWindow = (backgroundColor, buttonColor, reference) => {
 
   //CLOSE THE POPUP WINDOW BY BLICKING ON THE BACKGROUND
   document.querySelector("#popup").addEventListener("click", () => {
-    location.assign("/index.html")
+    location.assign("index.html")
   })
   document.querySelector(".popup").addEventListener("click", (event) => {
     event.stopPropagation();
@@ -79,9 +79,9 @@ const createPopupWindow = (backgroundColor, buttonColor, reference) => {
       const popupPasswordInput = document.querySelector("#password")
       const popupEmailInput = document.querySelector("#email")
       if (popupPasswordInput.value === "697" && popupEmailInput.value === "" ) {
-        location.assign("/hack.html")
+        location.assign("hack.html")
       } else {
-        location.assign("/index.html")
+        location.assign("index.html")
       }
     })
   }

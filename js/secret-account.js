@@ -46,7 +46,7 @@ document.querySelector(".account__form").addEventListener("submit", (el) => {
     mrLee.saveStatusAccount(mrLee.finalValue)
     renderStatusAccount(mrLee.finalValue)
     window.setTimeout(() => {
-        location.assign("/index.html")
+        location.assign("index.html")
     },1500)    
 })
 window.addEventListener("storage", (el) => {
