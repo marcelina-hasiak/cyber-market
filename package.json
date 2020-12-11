@@ -1,7 +1,7 @@
 {
   "name": "cybermarket",
   "version": "1.0.0",
-  "description": "Cyber Market Store",
+  "description": "funsite with secrets hidden inside",
   "main": "index.js",
   "scripts": {
     "watch:sass": "node-sass sass/main.scss css/style.css -w",
@@ -22,6 +22,8 @@
     "postcss-cli": "^6.1.3"
   },
   "dependencies": {
-    "live-server": "^1.2.1"
+    "live-server": "^1.2.1",
+    "yargs-parser": ">=5.0.0-security.0",
+    "minimist": ">=1.2.3"
   }
 }

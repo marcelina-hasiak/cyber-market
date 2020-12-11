@@ -1,8 +1,8 @@
 # Cyber Market
 Cyber Market is my first website I've ever made. Amazed what I can do with css I filled the website with gazillion bells and whistles. I've also hidden the secret (only for customers).
 
-[![website-visualisation-1](https://marcelina-hasiak.github.io/cyber-market/website-visualisation-1.png)]
-[![website-visualisation-2](https://marcelina-hasiak.github.io/cyber-market/website-visualisation-2.png)]
+![website-visualisation-1](https://marcelina-hasiak.github.io/cyber-market/website-visualisation-1.png)
+![website-visualisation-2](https://marcelina-hasiak.github.io/cyber-market/website-visualisation-2.png)
 
 # Used technics
 - Web Storage
