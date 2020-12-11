@@ -26,6 +26,12 @@ Cyber Market is my first website I've ever made. Amazed what I can do with css I
 # Features to add in the future
 - and what shoudn't I add....
 
-#  ATTENTION! Access to hidden account revealed below
+# ATTENTION! Access to hidden account revealed below
 1) Press the `I'M THE CUSTOMER` button.
 2) Leave the email-adress empty and type the password (which is hidden in moveable banner- it's the stand number where the flowers and other things are sold) - 697
+
+# How to use it ?
+Download locally project and then type `npm install`. Now you're able to use one of these script below:
+- `npm run start` to start devserver and watch sass changes
+- `npm run compile:sass` to compile sass to css
+- `npm run build:css` to compile sass, add prefixes and compress css
