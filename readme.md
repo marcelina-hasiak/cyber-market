@@ -35,3 +35,9 @@ Download locally project and then type `npm install`. Now you're able to use one
 - `npm run start` to start devserver and watch sass changes
 - `npm run compile:sass` to compile sass to css
 - `npm run build:css` to compile sass, add prefixes and compress css
+
+## Author
+Marcelina Hasiak - Design and coding.
+
+## License
+For personal use only. Do not distribute.
